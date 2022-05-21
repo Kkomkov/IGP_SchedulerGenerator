@@ -5,6 +5,6 @@ namespace SchedulerGerenrator.Services.Interfaces
     
     public interface IRecipeService
     {
-        RecipeServiceResponse GetRecipes();
+        Task<List<Recipe>> GetRecipesAsync();
     }
 }
