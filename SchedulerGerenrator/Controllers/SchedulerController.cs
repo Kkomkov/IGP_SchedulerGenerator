@@ -36,22 +36,27 @@ namespace SchedulerGerenrator.Controllers
         /// <param name="trays">List of tray</param>
         /// <returns> IEnumerable<TrayResponse> </returns>
         [HttpPost(Name = "GetTrayScheduler")]
-        public ActionResult<IEnumerable<TrayResponse>> Get([Required, NotNull] List<TrayRequest> trays)
+        public async Task<ActionResult<IEnumerable<TrayResponse>>> Get([Required, NotNull] List<TrayRequest> trays)
         {
             //get recipes
-            var recipesResponse = _recipeService.GetRecipes();
-
-            if (! recipesResponse.IsValid)
-            {                               
-               return  StatusCode(StatusCodes.Status500InternalServerError, recipesResponse.ExceptionDescription);
+            List<Recipe> recipes = null;
+            try
+            {
+                recipes = await  _recipeService.GetRecipesAsync();
             }
+            catch(Exception ex)
+            {
+                _logger.LogError("Request recipe api service failed",ex);
+                return StatusCode(StatusCodes.Status500InternalServerError,"Request recipe api service failed");
+            }
+
+            var scheduler = _schedulerService.TransformToScheduler(recipes, trays);
             
-            var scheduler = _schedulerService.TransformToScheduler(recipesResponse.Recipes, trays);
-            //for each tray transform recipe to schedule
-            //return schedule
             return scheduler;
 
         }
+
+         
 
 
     }

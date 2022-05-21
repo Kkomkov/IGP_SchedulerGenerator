@@ -20,14 +20,23 @@ namespace SchedulerGerenrator.Services
         {
             List<TrayResponse> allTraysScheduler = new List<TrayResponse>(trays.Count);
 
-            //TODO:GetRecipes should return dictionary
+            
+            TrayResponse trayResponseItem = null;
             var recipeDictionary = recipes.ToDictionary(x => x.Name);
-
+            //try get schedule for each tray
             foreach (var tray in trays)
             {
                 recipeDictionary.TryGetValue(tray.RecipeName, out var recipe);
-                TrayResponse trayScheduler = null;
-                allTraysScheduler.Add(trayScheduler);
+
+                if (recipe != null)
+                    trayResponseItem = TransformRecipeToScheduler(recipe, tray);
+                else
+                    trayResponseItem = new TrayResponse(tray.TrayNumber)
+                                            {
+                                                Exception = $"There is no recipe with name '{tray.RecipeName}'"
+                                            };
+
+                allTraysScheduler.Add(trayResponseItem);
             }
 
             return allTraysScheduler;
@@ -160,7 +169,6 @@ namespace SchedulerGerenrator.Services
         /// <param name="operations">flat list of time related operations </param>
         /// <param name="trayStartDate">start date of growing process</param>
         /// <returns>list of scheduled water oprations with absolute time</returns>
-
         public List<WaterSchedulerRecord> GetWaterScheduler(List<WateringTimeSpanBasedOperation> operations, DateTime trayStartDate)
         {
             var scheduledRecords = operations.Select(x => new WaterSchedulerRecord()
