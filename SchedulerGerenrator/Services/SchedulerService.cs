@@ -3,11 +3,11 @@ using SchedulerGerenrator.Models.ExternalApi.IGS;
 using SchedulerGerenrator.Models.Operations;
 using SchedulerGerenrator.Models.Requests;
 using SchedulerGerenrator.Models.Response;
-
+using SchedulerGerenrator.Services.Interfaces;
 
 namespace SchedulerGerenrator.Services
 {
-    public class SchedulerService
+    public class SchedulerService : ISchedulerService
     {
 
         /// <summary>
@@ -16,7 +16,7 @@ namespace SchedulerGerenrator.Services
         /// <param name="recipes">list of known recipes </param>
         /// <param name="trays">list of tray</param>
         /// <returns>operations scheduler List<TrayResponse> </returns>
-        protected List<TrayResponse> TransformToScheduler(List<Recipe> recipes, List<TrayRequest> trays)
+        public List<TrayResponse> TransformToScheduler(List<Recipe> recipes, List<TrayRequest> trays)
         {
             List<TrayResponse> allTraysScheduler = new List<TrayResponse>(trays.Count);
 
@@ -48,8 +48,6 @@ namespace SchedulerGerenrator.Services
                 trayScheduler.Exception = "Recipe not found";
                 return trayScheduler;
             }
-
-
 
             //IDEA: A recipe could be transformed to a scheduler with relative start time (TimeSpan)
             //in that case it's independent of Tray.StartTime
