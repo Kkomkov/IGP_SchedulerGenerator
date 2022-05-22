@@ -127,14 +127,13 @@ namespace SchedulerGerenrator.Services
                 for (int i = 0; i < phase.Repetitions; i++)
                 {
                     var operationEnd = operationStart + new TimeSpan(phase.Hours, phase.Minutes, 0);
-                    var waterOperation = new WateringTimeSpanBasedOperation()
-                    {
-
-                        Start = operationStart,
-                        End = operationEnd,
-                        Amount = phase.Amount,
-                    };
-
+                    waterOperations.Add(new WateringTimeSpanBasedOperation()
+                                        {
+                                            Start = operationStart,
+                                            End = operationEnd,
+                                            Amount = phase.Amount,
+                                        });
+                    
                     //End of a phase or repetion is a start of next phase/repetition
                     operationStart = operationEnd;
                 }
