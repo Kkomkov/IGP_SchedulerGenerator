@@ -12,11 +12,7 @@ namespace SchedulerGerenrator.Models.Operations
             End = end;
             Intensity = intensity;
         }
-        //public  bool Equals(LightingTimeSpanBasedOperation? obj)
-        //{
-        //    return base.Equals(obj)&& Intensity==obj?.Intensity;
-        //}
-
+        
     }
 
 }

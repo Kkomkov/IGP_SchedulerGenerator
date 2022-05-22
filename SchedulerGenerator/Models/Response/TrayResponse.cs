@@ -5,8 +5,8 @@ namespace SchedulerGerenrator.Models.Response
         
         public int TrayNumber { get; private set; }
         
-        public List<LightSchedulerRecord> Light { get; set; }
-        public List<WaterSchedulerRecord> Water { get; set; }
+        public List<LightingSchedulerRecord> Lighting { get; set; }
+        public List<WateringSchedulerRecord> Watering { get; set; }
         public string Exception { get;  set; }
 
         public TrayResponse(int trayNumber)

@@ -8,8 +8,8 @@ namespace SchedulerGerenrator.Models.Response
         public DateTime EndDate { get; set; }
     }
 
-    public record LightSchedulerRecord: SchedulerRecord
+    public record LightingSchedulerRecord: SchedulerRecord
     {      
-        public LightIntensity Intencity { get; set; }
+        public LightIntensity Intensity { get; set; }
     }
 }

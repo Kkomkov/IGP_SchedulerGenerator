@@ -48,7 +48,7 @@ namespace SchedulerGerenrator.Services
         /// <param name="recipe"> a recipe</param>
         /// <param name="tray"> a tray</param>
         /// <returns>scheduler for given tray</returns>
-        protected TrayResponse TransformRecipeToScheduler(Recipe recipe, TrayRequest tray)
+        public TrayResponse TransformRecipeToScheduler(Recipe recipe, TrayRequest tray)
         {
             TrayResponse trayScheduler = new TrayResponse(tray.TrayNumber);
 
@@ -62,7 +62,12 @@ namespace SchedulerGerenrator.Services
             //in that case it's independent of Tray.StartTime
             //and could be reused for another tray with the same recipeName
             List<LightingTimeSpanBasedOperation> lightOperations = GetLightOperationsFlatList(recipe);// we could calculate count of operations  sum(operations.count*reperitions)
-            trayScheduler.Light = GetLightScheduler(lightOperations, tray.StartDate.ToUniversalTime());
+            trayScheduler.Lighting = GetLightingScheduler(lightOperations, tray.StartDate.ToUniversalTime());
+
+            List<WateringTimeSpanBasedOperation> waterOperations = GetWaterOperationsFlatList(recipe);
+            trayScheduler.Watering = GetWateringScheduler(waterOperations, tray.StartDate.ToUniversalTime());
+
+
 
             return trayScheduler;
         }
@@ -142,20 +147,23 @@ namespace SchedulerGerenrator.Services
             return waterOperations;
         }
 
-        //Possible optimization:the method could be replaced with model mapping approach
+        //Possible optimization:the method could be replaced with model mapping approach 
         /// <summary>
         /// Transform a flat list of light operations with timeSpan to list of scheduled records with absolute DateTime
         /// </summary>
         /// <param name="operations">flat list of time related operations </param>
         /// <param name="trayStartDate">start date of growing process</param>
         /// <returns>list of scheduled light oprations with absolute time</returns>
-        public List<LightSchedulerRecord> GetLightScheduler(List<LightingTimeSpanBasedOperation> operations, DateTime trayStartDate)
+        public List<LightingSchedulerRecord> GetLightingScheduler(List<LightingTimeSpanBasedOperation> operations, DateTime trayStartDate)
         {
-            var scheduledRecords = operations.Select(x => new LightSchedulerRecord()
+            if (operations == null)
+                return null;
+
+            var scheduledRecords = operations.Select(x => new LightingSchedulerRecord()
             {
                 StartDate = trayStartDate + x.Start,
                 EndDate = trayStartDate + x.End,
-                Intencity = x.Intensity
+                Intensity = x.Intensity
             }).ToList();
 
             return scheduledRecords;
@@ -168,9 +176,12 @@ namespace SchedulerGerenrator.Services
         /// <param name="operations">flat list of time related operations </param>
         /// <param name="trayStartDate">start date of growing process</param>
         /// <returns>list of scheduled water oprations with absolute time</returns>
-        public List<WaterSchedulerRecord> GetWaterScheduler(List<WateringTimeSpanBasedOperation> operations, DateTime trayStartDate)
-        {   
-            var scheduledRecords = operations.Select(x => new WaterSchedulerRecord()
+        public List<WateringSchedulerRecord> GetWateringScheduler(List<WateringTimeSpanBasedOperation> operations, DateTime trayStartDate)
+        {
+            if (operations == null )
+                return null;
+
+            var scheduledRecords = operations?.Select(x => new WateringSchedulerRecord()
             {
                 StartDate = trayStartDate + x.Start,
                 EndDate = trayStartDate + x.End,

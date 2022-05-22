@@ -20,25 +20,25 @@ namespace NUnitTests.SchedulerServiceTests
                 new TestCaseData(
                      new List<WateringTimeSpanBasedOperation> (){ },
                      new DateTime(2000,1,1),
-                     new List<WaterSchedulerRecord> (){ }
+                     new List<WateringSchedulerRecord> (){ }
                     ),
                 new TestCaseData(
                      new List<WateringTimeSpanBasedOperation> (){ 
                             new WateringTimeSpanBasedOperation() { Start = new TimeSpan(0,0,0),End= new TimeSpan(0,0,0),Amount =0} 
                      },
                      new DateTime(2000,1,1),
-                     new List<WaterSchedulerRecord> (){
-                          new WaterSchedulerRecord() { StartDate =new DateTime(2000,1,1)+ new TimeSpan(0,0,0),EndDate= new DateTime(2000,1,1)+new TimeSpan(0,0,0),Amount =0}
+                     new List<WateringSchedulerRecord> (){
+                          new WateringSchedulerRecord() { StartDate =new DateTime(2000,1,1)+ new TimeSpan(0,0,0),EndDate= new DateTime(2000,1,1)+new TimeSpan(0,0,0),Amount =0}
                      }
                     ),
             };
         
         
         [Test, TestCaseSource(nameof(TestDataWateringTimeSpanBasedOperation))]
-        public void Test_SeweralCases_ExpectPass(List<WateringTimeSpanBasedOperation> operations,DateTime startDate, List<WaterSchedulerRecord> expectedResult)
+        public void Test_SeweralCases_ExpectPass(List<WateringTimeSpanBasedOperation> operations,DateTime startDate, List<WateringSchedulerRecord> expectedResult)
         {
             
-             var result = _shedulerService.GetWaterScheduler(operations, startDate);
+             var result = _shedulerService.GetWateringScheduler(operations, startDate);
             Assert.NotNull(result);
             Assert.AreEqual(result.Count, operations.Count);
 
@@ -52,7 +52,7 @@ namespace NUnitTests.SchedulerServiceTests
         public void Test_nullOperations_expecteNull()
         {
 
-            var result = _shedulerService.GetWaterScheduler(null, DateTime.Now);
+            var result = _shedulerService.GetWateringScheduler(null, DateTime.Now);
             Assert.Null(result);
         }
 
@@ -60,7 +60,7 @@ namespace NUnitTests.SchedulerServiceTests
         public void Test_EmptyOperations_expecteEmpty()
         {
 
-            var result = _shedulerService.GetWaterScheduler(new List<WateringTimeSpanBasedOperation>(), DateTime.Now);
+            var result = _shedulerService.GetWateringScheduler(new List<WateringTimeSpanBasedOperation>(), DateTime.Now);
             Assert.NotNull(result);
             Assert.AreEqual(0,result.Count);
         }
