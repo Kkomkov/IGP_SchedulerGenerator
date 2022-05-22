@@ -1,5 +1,3 @@
-
-
 namespace NUnitTests
 {
     public class GetLightOperationsFlatListTests
@@ -16,9 +14,10 @@ namespace NUnitTests
          private static IEnumerable<TestCaseData> TestDataGetOperationsFlatList =>
             new List<TestCaseData>
             {               
-                new TestCaseData( 0,new Recipe("3") { }),
-                new TestCaseData( 1, // expected Lighting operations
-                                  new Recipe("2") {
+                new TestCaseData( new Recipe("3") { },new  List<LightingTimeSpanBasedOperation> ()),
+                new TestCaseData(
+                                  
+                                new Recipe("2") {
                                         LightingPhases = new List<LightingPhase>() {
                                                 new LightingPhase("wp1",0,1,0,1)
                                                 {
@@ -27,10 +26,14 @@ namespace NUnitTests
                                                     }
                                                 }
                                         } 
-                                    }
-                                
+                                    },
+                                //expected result  
+                                new  List<LightingTimeSpanBasedOperation> () { 
+                                    new LightingTimeSpanBasedOperation(new TimeSpan(0,0,0),new TimeSpan(1,0,0),LightIntensity.Low)  
+                                }
+
                 ),
-                new TestCaseData (3,//expected Light operations count
+                new TestCaseData (
                     new Recipe("1")  {
                        
                         LightingPhases = new List<LightingPhase>() {
@@ -43,10 +46,16 @@ namespace NUnitTests
                             new LightingPhase("wp2",0,2,0,2)
                             {
                                 Operations = new List<LightingPhaseOperation>(){
-                                    new LightingPhaseOperation(0,0, LightIntensity.Low)
+                                    new LightingPhaseOperation(0,0, LightIntensity.High)
                                 }
                             },
                         }
+                    },
+
+                    new  List<LightingTimeSpanBasedOperation> () {
+                        new LightingTimeSpanBasedOperation(new TimeSpan(0,0,0),new TimeSpan(1,0,0),LightIntensity.Low),
+                        new LightingTimeSpanBasedOperation(new TimeSpan(1,0,0),new TimeSpan(3,0,0),LightIntensity.High),
+                        new LightingTimeSpanBasedOperation(new TimeSpan(3,0,0),new TimeSpan(5,0,0),LightIntensity.High),
                     }
                 )
             };
@@ -87,17 +96,18 @@ namespace NUnitTests
             
         }
 
-
-
         [Test, TestCaseSource(nameof(TestDataGetOperationsFlatList))]
-        public void Test2(int expectedOperationCount,Recipe recipe)
+        public void Test2(Recipe recipe, List<LightingTimeSpanBasedOperation> expectedList)
         {
           
             var flatOperationList = _shedulerService.GetLightOperationsFlatList(recipe);
            
             Assert.NotNull(flatOperationList, "Flat operations list should not be null");                                 
-            Assert.AreEqual(expectedOperationCount, flatOperationList.Count, "Wrong count of records");
-
+            Assert.AreEqual(expectedList.Count, flatOperationList.Count, "Wrong count of records");
+            for( int i=0;i< expectedList.Count;i++)
+            {
+                Assert.AreEqual(flatOperationList[i], expectedList[i], $"Row {i} in result has wrong value");
+            }
         }
 
 

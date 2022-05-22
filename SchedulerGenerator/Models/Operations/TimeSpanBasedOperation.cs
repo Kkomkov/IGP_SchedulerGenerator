@@ -1,9 +1,9 @@
 ﻿namespace SchedulerGerenrator.Models.Operations
 {
-    public abstract class TimeSpanBasedOperation
+    public abstract record TimeSpanBasedOperation
     {
         public TimeSpan Start;
-        public TimeSpan End;
+        public TimeSpan End;        
     }
 
 }
