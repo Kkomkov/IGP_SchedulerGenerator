@@ -169,7 +169,7 @@ namespace SchedulerGerenrator.Services
         /// <param name="trayStartDate">start date of growing process</param>
         /// <returns>list of scheduled water oprations with absolute time</returns>
         public List<WaterSchedulerRecord> GetWaterScheduler(List<WateringTimeSpanBasedOperation> operations, DateTime trayStartDate)
-        {
+        {   
             var scheduledRecords = operations.Select(x => new WaterSchedulerRecord()
             {
                 StartDate = trayStartDate + x.Start,
