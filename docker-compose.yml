@@ -1,0 +1,11 @@
+version: '3.3'
+
+services:
+  schedulergenerator:
+    build: ./SchedulerGenerator
+    ports:
+      - "7080:80" 
+ #   environment:
+ #     - ASPNETCORE_ENVIRONMENT=DCompose
+      
+      
