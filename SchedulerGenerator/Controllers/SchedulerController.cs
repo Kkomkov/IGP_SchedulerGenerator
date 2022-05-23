@@ -46,8 +46,11 @@ namespace SchedulerGerenrator.Controllers
             }
             catch(Exception ex)
             {
-                _logger.LogError("Request recipe api service failed",ex);
-                return StatusCode(StatusCodes.Status500InternalServerError,"Request recipe api service failed");
+                var erorrMessage = "Request recipe api service failed";
+               _logger.LogError(erorrMessage, ex);
+
+                erorrMessage += " "+ex.Message;
+                return StatusCode(StatusCodes.Status500InternalServerError, erorrMessage);
             }
 
             var scheduler = _schedulerService.TransformToScheduler(recipes, trays);

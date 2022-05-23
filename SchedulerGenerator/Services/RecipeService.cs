@@ -37,7 +37,7 @@ namespace SchedulerGerenrator.Services
             catch (Exception ex)
             {
                 logger.LogError("Recipe api request exception", ex);
-                throw;
+                throw new Exception($"\nPlease recheck RecipeApi settings: {settings}"  , ex);
             }
         }
     }

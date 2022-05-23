@@ -8,7 +8,7 @@
 
         public override string ToString()
         {
-            return $" UseHttps:{UseHttps}, Host:{Host},Port:{Port}";
+            return $"UseHttps:{UseHttps}, Host:{Host}, Port:{Port}";
         }
     }
 }
