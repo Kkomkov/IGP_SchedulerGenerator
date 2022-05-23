@@ -5,7 +5,13 @@ services:
     build: ./SchedulerGenerator
     ports:
       - "7080:80" 
- #   environment:
- #     - ASPNETCORE_ENVIRONMENT=DCompose
-      
+       
+    environment:
+      - ExternalServices__RecipeApi__Host=tech-test-software-engineer_recipeapi_1
+      - ExternalServices__RecipeApi__Port=80
+      - ExternalServices__RecipeApi__UseHttps=false
+networks:
+  default:
+    external:
+      name: tech-test-software-engineer_default     
       
