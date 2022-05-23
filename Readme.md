@@ -64,7 +64,7 @@ Phase hours,minutes help calculate last operation in a phase duration.
 
 # How to use Api
 SchedulerGenerator expose one endpoint
-post:<host>/Scheduler 
+post:< host >/Scheduler 
 The request assept  body - array of trays 
 
 ```typescript
@@ -93,8 +93,8 @@ Before running Scheduler Generator please check and adjust if needed connection 
   To communicate with another application or container both containers must be in the same network.
 ### Assumptions: 
 	RecipeAPI runs in a contaner with 
-	**name**: tech-test-software-engineer_recipeapi_1 and 
-	**network**: tech-test-software-engineer_default
+	_name_: tech-test-software-engineer_recipeapi_1 and 
+	_network_: tech-test-software-engineer_default
   
   Docker-Compose.yml configured to put SchedulerGenerator container to the network tech-test-software-engineer_default. 
   
@@ -104,7 +104,7 @@ Before running Scheduler Generator please check and adjust if needed connection 
 		docker-compose up
   if RecipeAPI has another  container name or network
   please check RecipeApi container settings 
-	edit Docker-Compose.yaml set environment:
+	and edit Docker-Compose.yaml set environment:
 	
 ```yaml
 	environment:
