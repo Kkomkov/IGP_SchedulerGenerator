@@ -106,8 +106,8 @@ Before running Scheduler Generator please check and adjust if needed connection 
   please check RecipeApi container settings 
 	and edit Docker-Compose.yaml set environment:
 	
-```yaml
-	environment:
+```typescript
+environment:
       - ExternalServices__RecipeApi__Host=<RecipeApi container name>
       - ExternalServices__RecipeApi__Port=80
       - ExternalServices__RecipeApi__UseHttps=false
@@ -124,11 +124,13 @@ networks:
 		
 ## Option 3: Run Scheduler GeneratorRecipeAPI in container and RecipeApi is external service.
   Please edit Docker-Compose.YML and set 
-  environment:
+```typescript 
+environment:
       - ExternalServices__RecipeApi__Host
 	  - ExternalServices__RecipeApi__Port
-	  
-* execute in cmd from solution folder "Scheduler Generator" 
+	  - ExternalServices__RecipeApi__UseHttps	  
+```
+#### To start container please execute in cmd from solution folder "Scheduler Generator" 
 		docker-compose build 
 		docker-compose up
 
