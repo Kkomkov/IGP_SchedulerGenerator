@@ -34,6 +34,7 @@ It has sense for light and has less sense for water.
 Anyway I will add endDate field into schedule to make more obvious when each operation should end. 
 
 # Expected result json schema
+```json
 {
 	[ trayNumber:"integer",
 	  lightSchedule:[ 
@@ -65,6 +66,7 @@ Phase hours,minutes help calculate last operation in a phase duration.
 SchedulerGenerator expose one endpoint
 post: Scheduler 
 It assept request body - array of trays 
+
 ```typescript
 [{
       trayNumber: 1,
