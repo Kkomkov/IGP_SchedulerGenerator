@@ -50,7 +50,7 @@ Anyway I will add endDate field into schedule to make more obvious when each ope
 	  }]	  
 	]
 }
-
+```
 According to my understandin startDate ,endDate and intencity/amount is a minimum set of field required to make a shedulere.
 
 #How to generate a schedule:
@@ -60,3 +60,60 @@ Recipe return a list of phases with nested list of operations separately for lig
 We need to go thought list and  add startDate to operation duration for each operation , repeate the process for repetitions value.
 
 Phase hours,minutes help calculate last operation in a phase duration.
+
+
+#How to setup
+The app Scheduler Generator depends on external service RecipeApi.
+Before running Scheduler Generator please check and adjust if needed connection settings for RecipeApi. 
+
+
+Option 1: run Scheduler Generator from IDE 
+  Check in AppSettings.<Environment>.Json ExternalServices.RecipeApi settins and edit it if RecipeApi has another conenction parameters.
+  Run 
+  
+Option 2: run both applications in Docker-Compose
+  To communicate with another application or container  , both containers must be in the same network.
+  Assumptions: 
+	RecipeAPI runs in a contaner with 
+	name: tech-test-software-engineer_recipeapi_1 and 
+	network: tech-test-software-engineer_default
+  
+  Docker-Compose.yml configured to put SchedulerGenerator container to the network tech-test-software-engineer_default. 
+  
+  If the assumptions right then no editing required just build and start Scheduler Generator container
+  * execute in cmd from solution folder "Scheduler Generator" 
+		docker-compose build 
+		docker-compose up
+  if RecipeAPI has another  container name or network
+  please check RecipeApi container settings 
+	edit Docker-Compose.yaml set environment:
+	
+```typescript
+	environment:
+      - ExternalServices__RecipeApi__Host=<RecipeApi container name>
+      - ExternalServices__RecipeApi__Port=80
+      - ExternalServices__RecipeApi__UseHttps=false
+networks:
+  default:
+    external:
+      name: <RecipeApi network>
+```
+
+* execute in cmd from solution folder "Scheduler Generator" 
+		docker-compose build 
+		docker-compose up
+		
+		
+Option 3: Run Scheduler GeneratorRecipeAPI in container and RecipeApi is external service.
+  Please edit Docker-Compose.YML and set 
+  environment:
+      - ExternalServices__RecipeApi__Host
+	  - ExternalServices__RecipeApi__Port
+	  
+* execute in cmd from solution folder "Scheduler Generator" 
+		docker-compose build 
+		docker-compose up
+
+
+
+  
