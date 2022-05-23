@@ -34,7 +34,7 @@ It has sense for light and has less sense for water.
 Anyway I will add endDate field into schedule to make more obvious when each operation should end. 
 
 ## Expected result json schema
-```json
+```typescript
 {
 	[ trayNumber:"integer",
 	  lightSchedule:[ 
