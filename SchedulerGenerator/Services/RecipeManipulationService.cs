@@ -8,10 +8,10 @@ namespace SchedulerGenerator.Services
 {
     public class RecipeManipulationService : IRecipeManipulationService
     {
-        private readonly Logger<RecipeManipulationService> logger;
+        private readonly ILogger<RecipeManipulationService> logger;
         private readonly IMemoryCache memoryCache;
 
-        public RecipeManipulationService(Logger<RecipeManipulationService> logger, IMemoryCache memoryCache)
+        public RecipeManipulationService(ILogger<RecipeManipulationService> logger, IMemoryCache memoryCache)
         {
             this.logger = logger;
             this.memoryCache = memoryCache;

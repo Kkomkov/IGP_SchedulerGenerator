@@ -3,7 +3,7 @@
 namespace SchedulerGerenrator.Services.Interfaces
 {
     
-    public interface IRecipeService
+    public interface IRecipeApiService
     {
         Task<List<Recipe>> GetRecipesAsync();
     }

@@ -5,7 +5,7 @@ using SchedulerGerenrator.Services.Interfaces;
 namespace SchedulerGerenrator.Services
 {
 
-    public class RecipeApiService : IRecipeService
+    public class RecipeApiService : IRecipeApiService
     {
         private readonly ILogger<RecipeApiService> logger;
         private readonly RecipeAPISettings settings;

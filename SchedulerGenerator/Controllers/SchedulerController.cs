@@ -16,11 +16,11 @@ namespace SchedulerGerenrator.Controllers
     {
         private readonly ILogger<SchedulerController> _logger;
         public readonly ISchedulerService _schedulerService;
-        private readonly IRecipeService _recipeService;
+        private readonly IRecipeApiService _recipeService;
 
         public SchedulerController(ILogger<SchedulerController> logger,
             ISchedulerService schedulerService,
-            IRecipeService recipeService
+            IRecipeApiService recipeService
             )
         {
             _logger = logger;
