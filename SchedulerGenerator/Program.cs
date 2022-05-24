@@ -1,5 +1,3 @@
-using SchedulerGenerator.Services;
-using SchedulerGenerator.Services.Interfaces;
 using SchedulerGenerator.Models.ExternalApi;
 using SchedulerGenerator.Services;
 using SchedulerGenerator.Services.Interfaces;
@@ -14,7 +12,8 @@ var recipeApiSettings = builder.Configuration.GetSection("ExternalServices")
                                              .Get<RecipeAPISettings>();
 
 builder.Services.AddSingleton<RecipeAPISettings>(recipeApiSettings);
-builder.Services.AddScoped<IRecipeApiService,RecipeApiService>();
+builder.Services.AddScoped< RecipeApiService>();
+builder.Services.AddScoped<IRecipeApiService,RecipeApiCacheService>();
 builder.Services.AddScoped<IRecipeManipulationService, RecipeManipulationService>();
 builder.Services.AddScoped<ISchedulerService, SchedulerService>();
 
