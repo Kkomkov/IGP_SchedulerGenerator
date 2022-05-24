@@ -1,6 +1,6 @@
 ﻿using SchedulerGenerator.Models.Operations;
-using SchedulerGerenrator.Models.ExternalApi.IGS;
-using SchedulerGerenrator.Models.Operations;
+using SchedulerGenerator.Models.ExternalApi.IGS;
+using SchedulerGenerator.Models.Operations;
 
 namespace SchedulerGenerator.Services.Interfaces
 {

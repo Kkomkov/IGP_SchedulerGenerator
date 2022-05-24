@@ -1,14 +1,8 @@
-﻿using SchedulerGenerator.Services;
-using SchedulerGerenrator.Models.Requests;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace NUnitTests.SchedulerServiceTests
 {
-    //in fact it's integration tests
+
     internal class TransformToSchedulerTests
     {
         private SchedulerService _shedulerService;

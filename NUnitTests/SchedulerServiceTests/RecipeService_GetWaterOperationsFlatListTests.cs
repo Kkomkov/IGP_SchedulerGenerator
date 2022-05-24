@@ -1,16 +1,14 @@
-using SchedulerGenerator.Services;
-
 namespace NUnitTests.SchedulerServiceTests
 {
     public class RecipeService_GetWaterOperationsFlatListTests
     {
-        //private SchedulerService _shedulerService;
+       
         private RecipeManipulationService _recipeService;
         [SetUp]
         public void Setup()
         {
             _recipeService = new RecipeManipulationService(null, null);
-           // _shedulerService = new SchedulerService(new RecipeManipulationService(null, null));
+           
         }
 
         private static IEnumerable<TestCaseData> TestDataGetOperationsFlatList =>

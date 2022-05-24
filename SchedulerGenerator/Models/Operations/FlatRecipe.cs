@@ -1,4 +1,4 @@
-﻿using SchedulerGerenrator.Models.Operations;
+﻿using SchedulerGenerator.Models.Operations;
 
 namespace SchedulerGenerator.Models.Operations
 {

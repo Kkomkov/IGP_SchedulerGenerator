@@ -1,6 +1,6 @@
 ﻿using SchedulerGenerator.Models.Operations;
-using SchedulerGerenrator.Models.Operations;
-using SchedulerGerenrator.Models.Response;
+using SchedulerGenerator.Models.Operations;
+using SchedulerGenerator.Models.Response;
 
 namespace SchedulerGenerator.Services.Extensions
 {

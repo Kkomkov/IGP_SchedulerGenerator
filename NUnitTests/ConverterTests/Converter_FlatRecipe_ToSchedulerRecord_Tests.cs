@@ -1,6 +1,4 @@
 ﻿using SchedulerGenerator.Models.Operations;
-using SchedulerGenerator.Services.Extensions;
-using SchedulerGerenrator.Models.Response;
 
 namespace NUnitTests.ConverterTests
 {

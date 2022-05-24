@@ -1,6 +1,6 @@
-﻿using SchedulerGerenrator.Models.ExternalApi.IGS;
+﻿using SchedulerGenerator.Models.ExternalApi.IGS;
 
-namespace SchedulerGerenrator.Models.Operations
+namespace SchedulerGenerator.Models.Operations
 {
     public record LightingTimeSpanBasedOperation : TimeSpanBasedOperation
     {

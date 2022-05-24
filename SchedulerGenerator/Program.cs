@@ -1,8 +1,8 @@
 using SchedulerGenerator.Services;
 using SchedulerGenerator.Services.Interfaces;
-using SchedulerGerenrator.Models.ExternalApi;
-using SchedulerGerenrator.Services;
-using SchedulerGerenrator.Services.Interfaces;
+using SchedulerGenerator.Models.ExternalApi;
+using SchedulerGenerator.Services;
+using SchedulerGenerator.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

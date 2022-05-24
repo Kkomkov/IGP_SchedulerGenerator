@@ -1,8 +1,8 @@
-﻿using SchedulerGerenrator.Models.ExternalApi.IGS;
-using SchedulerGerenrator.Models.Requests;
-using SchedulerGerenrator.Models.Response;
+﻿using SchedulerGenerator.Models.ExternalApi.IGS;
+using SchedulerGenerator.Models.Requests;
+using SchedulerGenerator.Models.Response;
 
-namespace SchedulerGerenrator.Services.Interfaces
+namespace SchedulerGenerator.Services.Interfaces
 {
     public interface ISchedulerService
     {

@@ -1,4 +1,4 @@
-﻿namespace SchedulerGerenrator.Models.Operations
+﻿namespace SchedulerGenerator.Models.Operations
 {
     public record WateringTimeSpanBasedOperation : TimeSpanBasedOperation
     {

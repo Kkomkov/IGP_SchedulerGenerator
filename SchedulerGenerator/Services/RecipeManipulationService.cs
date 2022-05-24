@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
 using SchedulerGenerator.Models.Operations;
 using SchedulerGenerator.Services.Interfaces;
-using SchedulerGerenrator.Models.ExternalApi.IGS;
-using SchedulerGerenrator.Models.Operations;
+using SchedulerGenerator.Models.ExternalApi.IGS;
+using SchedulerGenerator.Models.Operations;
 
 namespace SchedulerGenerator.Services
 {

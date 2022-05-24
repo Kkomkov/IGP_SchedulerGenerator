@@ -1,5 +1,5 @@
 ﻿
-namespace SchedulerGerenrator.Models.Response
+namespace SchedulerGenerator.Models.Response
 {
     public class TrayResponse { 
         

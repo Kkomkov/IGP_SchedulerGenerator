@@ -1,6 +1,6 @@
-﻿using SchedulerGerenrator.Models.ExternalApi.IGS;
+﻿using SchedulerGenerator.Models.ExternalApi.IGS;
 
-namespace SchedulerGerenrator.Services.Interfaces
+namespace SchedulerGenerator.Services.Interfaces
 {
     
     public interface IRecipeApiService

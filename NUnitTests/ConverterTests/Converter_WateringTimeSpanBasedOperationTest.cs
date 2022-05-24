@@ -1,7 +1,4 @@
-﻿using SchedulerGenerator.Services.Extensions;
-using SchedulerGerenrator.Models.Response;
-
-namespace NUnitTests.ConverterTests
+﻿namespace NUnitTests.ConverterTests
 {
     internal class Converter_WateringTimeSpanBasedOperationTest
     {

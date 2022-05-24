@@ -1,6 +1,6 @@
-﻿using SchedulerGerenrator.Models.ExternalApi.IGS;
+﻿using SchedulerGenerator.Models.ExternalApi.IGS;
 
-namespace SchedulerGerenrator.Models.Response
+namespace SchedulerGenerator.Models.Response
 {
     public abstract record SchedulerRecord
     {

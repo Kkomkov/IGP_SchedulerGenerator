@@ -1,4 +1,4 @@
-﻿namespace SchedulerGerenrator.Models.Response
+﻿namespace SchedulerGenerator.Models.Response
 {
     public record WateringSchedulerRecord : SchedulerRecord
     {           

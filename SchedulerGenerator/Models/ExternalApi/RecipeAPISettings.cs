@@ -1,4 +1,4 @@
-﻿namespace SchedulerGerenrator.Models.ExternalApi
+﻿namespace SchedulerGenerator.Models.ExternalApi
 {
     public class RecipeAPISettings
     {

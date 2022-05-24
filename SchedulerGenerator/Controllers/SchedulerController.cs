@@ -1,14 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
-using SchedulerGerenrator.Models.ExternalApi.IGS;
+using SchedulerGenerator.Models.ExternalApi.IGS;
 
-using SchedulerGerenrator.Models.Requests;
-using SchedulerGerenrator.Models.Response;
+using SchedulerGenerator.Models.Requests;
+using SchedulerGenerator.Models.Response;
 
-using SchedulerGerenrator.Services.Interfaces;
+using SchedulerGenerator.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SchedulerGerenrator.Controllers
+namespace SchedulerGenerator.Controllers
 {
     [ApiController]
     [Route("[controller]")]

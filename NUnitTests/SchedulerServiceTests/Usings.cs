@@ -1,4 +1,6 @@
 
-global using SchedulerGerenrator.Models.ExternalApi.IGS;
-global using SchedulerGerenrator.Services;
-global using SchedulerGerenrator.Models.Operations;
+global using SchedulerGenerator.Models.ExternalApi.IGS;
+global using SchedulerGenerator.Models.Operations;
+global using SchedulerGenerator.Models.Requests;
+global using SchedulerGenerator.Services;
+

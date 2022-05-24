@@ -1,8 +1,8 @@
-﻿using SchedulerGerenrator.Models.ExternalApi;
-using SchedulerGerenrator.Models.ExternalApi.IGS;
-using SchedulerGerenrator.Services.Interfaces;
+﻿using SchedulerGenerator.Models.ExternalApi;
+using SchedulerGenerator.Models.ExternalApi.IGS;
+using SchedulerGenerator.Services.Interfaces;
 
-namespace SchedulerGerenrator.Services
+namespace SchedulerGenerator.Services
 {
 
     public class RecipeApiService : IRecipeApiService

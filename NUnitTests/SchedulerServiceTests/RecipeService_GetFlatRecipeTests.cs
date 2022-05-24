@@ -1,7 +1,4 @@
-﻿using SchedulerGenerator.Services;
-using SchedulerGerenrator.Models.Requests;
-
-namespace NUnitTests.SchedulerServiceTests
+﻿namespace NUnitTests.SchedulerServiceTests
 {
 
     public class RecipeService_GetFlatRecipeTests

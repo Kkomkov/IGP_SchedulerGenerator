@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-namespace SchedulerGerenrator.Models.Requests
+namespace SchedulerGenerator.Models.Requests
 {
     public class TrayRequest
     {

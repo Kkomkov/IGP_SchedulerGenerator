@@ -1,4 +1,4 @@
-﻿namespace SchedulerGerenrator.Models.ExternalApi.IGS;
+﻿namespace SchedulerGenerator.Models.ExternalApi.IGS;
 public record Recipes
 {
     public List<Recipe> recipes { get; set; }
