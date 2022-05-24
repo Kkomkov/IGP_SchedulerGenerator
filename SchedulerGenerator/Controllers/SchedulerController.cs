@@ -7,7 +7,6 @@ using SchedulerGerenrator.Models.Response;
 using SchedulerGerenrator.Services.Interfaces;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
-using System.Net;
 
 namespace SchedulerGerenrator.Controllers
 {
@@ -42,24 +41,24 @@ namespace SchedulerGerenrator.Controllers
             List<Recipe> recipes = null;
             try
             {
-                recipes = await  _recipeService.GetRecipesAsync();
+                recipes = await _recipeService.GetRecipesAsync();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 var erorrMessage = "Request recipe api service failed";
-               _logger.LogError(erorrMessage, ex);
+                _logger.LogError(erorrMessage, ex);
 
-                erorrMessage += " "+ex.Message;
+                erorrMessage += " " + ex.Message;
                 return StatusCode(StatusCodes.Status500InternalServerError, erorrMessage);
             }
 
             var scheduler = _schedulerService.TransformToScheduler(recipes, trays);
-            
+
             return scheduler;
 
         }
 
-         
+
 
 
     }

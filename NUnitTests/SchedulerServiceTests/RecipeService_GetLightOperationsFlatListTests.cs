@@ -1,14 +1,18 @@
+using SchedulerGenerator.Services;
+
 namespace NUnitTests.SchedulerServiceTests
 {
-    public class GetLightOperationsFlatListTests
+    public class RecipeService_GetLightOperationsFlatListTests
     {
 
-        private SchedulerService _shedulerService;
+       // private SchedulerService _shedulerService;
+        private RecipeManipulationService _recipeService;
 
         [SetUp]
         public void Setup()
         {
-            _shedulerService = new SchedulerService();
+             _recipeService = new RecipeManipulationService(null, null);
+            //_shedulerService = new SchedulerService(_recipeService);
         }
 
         private static IEnumerable<TestCaseData> TestDataGetOperationsFlatList =>
@@ -84,7 +88,7 @@ namespace NUnitTests.SchedulerServiceTests
             };
 
 
-            var flatOperationList = _shedulerService.GetLightOperationsFlatList(recipe);
+            var flatOperationList = _recipeService.GetLightOperationsFlatList(recipe);
             Assert.NotNull(flatOperationList, "Flat operations list should not be null");
             flatOperationList.OrderBy(x => x.Start);
 
@@ -100,7 +104,7 @@ namespace NUnitTests.SchedulerServiceTests
         public void Test2(Recipe recipe, List<LightingTimeSpanBasedOperation> expectedList)
         {
 
-            var flatOperationList = _shedulerService.GetLightOperationsFlatList(recipe);
+            var flatOperationList = _recipeService.GetLightOperationsFlatList(recipe);
 
             Assert.NotNull(flatOperationList, "Flat operations list should not be null");
             Assert.AreEqual(expectedList.Count, flatOperationList.Count, "Wrong count of records");

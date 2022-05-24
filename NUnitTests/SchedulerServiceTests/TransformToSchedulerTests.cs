@@ -1,4 +1,5 @@
-﻿using SchedulerGerenrator.Models.Requests;
+﻿using SchedulerGenerator.Services;
+using SchedulerGerenrator.Models.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace NUnitTests.SchedulerServiceTests
         [SetUp]
         public void Setup()
         {
-            _shedulerService = new SchedulerService();
+            _shedulerService = new SchedulerService(new RecipeManipulationService(null, null));
         }
 
 
@@ -48,14 +49,14 @@ namespace NUnitTests.SchedulerServiceTests
             var result = _shedulerService.TransformToScheduler(recipes, trays);
             Assert.NotNull(result);
             Assert.AreEqual(trays.Count, result.Count);
-            Assert.IsFalse(String.IsNullOrEmpty(result[0].Exception), "This tray record should contain an exception message");
+            Assert.IsFalse(string.IsNullOrEmpty(result[0].Exception), "This tray record should contain an exception message");
         }
 
         [Test]
         public void Test3_Recipes_ExpectSameCountOfRecord()
         {
             List<Recipe> recipes = new List<Recipe>();
-            
+
             var recipe3 = new Recipe("Potato");
             recipe3.LightingPhases.Add(new LightingPhase("Phase 3", 0, 24, 0, 5)
             {
@@ -84,10 +85,10 @@ namespace NUnitTests.SchedulerServiceTests
             var result = _shedulerService.TransformToScheduler(recipes, trays);
             Assert.NotNull(result);
             Assert.AreEqual(trays.Count, result.Count);
-            
 
-            Assert.AreEqual(2, result[0].Watering.Count,"Wrong watering operations count");
-            Assert.AreEqual(10, result[0].Lighting.Count,"Wrong lighting operations count");
+
+            Assert.AreEqual(2, result[0].Watering.Count, "Wrong watering operations count");
+            Assert.AreEqual(10, result[0].Lighting.Count, "Wrong lighting operations count");
         }
     }
 }

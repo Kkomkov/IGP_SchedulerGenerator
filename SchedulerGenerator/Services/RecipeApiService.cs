@@ -17,13 +17,12 @@ namespace SchedulerGerenrator.Services
             this.settings = settings;
         }
 
-
         public async Task<List<Recipe>> GetRecipesAsync()
         {
             try
             {
                 var url = new UriBuilder(settings.UseHttps?"https":"http", settings.Host, settings.Port).Uri;
-               // { Host = settings.Url, Port = settings.Port }.Uri;
+               
                 var client = new HttpClient() { BaseAddress = url};
                 var jsonOptions = new System.Text.Json.JsonSerializerOptions()
                 {
